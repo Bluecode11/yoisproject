@@ -7,5 +7,5 @@ const { name, color } = Astro.props;
 
     <span class={`w-3 h-3 md:w-4 md:h-4 rounded-full border-2 border-white shrink-0 animate-pulse ${color}`}></span>
 
-    <span class="font-black text-white uppercase text-xs md:text-base text-center tracking-wide leading-tight break-words">{name}</span>
+    <span class="font-black text-white uppercase text-xs md:text-base text-center tracking-wide leading-tight wrap-break-word">{name}</span>
 </div>
