@@ -1,0 +1,24 @@
+---
+// src/components/Projects.astro
+import { projects } from '../data/portfolio.js';
+---
+
+<section id="projects" class="mt-20 md:mt-24 reveal">
+    <h2 class="text-3xl md:text-4xl font-black uppercase text-center mb-8 md:mb-10">My Projects 💻</h2>
+    
+    <div class="flex flex-wrap justify-center gap-6">
+        {projects.map((p) => (
+            <div class={`w-full md:w-[300px] ${p.color} border-4 border-black p-6 rounded-3xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.2)] hover:-translate-y-2 transition-transform`}>
+                
+                <img 
+                    src={p.image} 
+                    alt={p.title} 
+                    class="w-full h-40 object-cover rounded-xl mb-4 border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform hover:scale-105"
+                />
+
+                <h3 class="text-2xl font-black mb-2 uppercase text-black">{p.title}</h3>
+                <p class="font-bold text-black/80">{p.desc}</p>
+            </div>
+        ))}
+    </div>
+</section>
