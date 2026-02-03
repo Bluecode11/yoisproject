@@ -75,4 +75,13 @@ export const projects = [
     color: "bg-stone-300",
     image: "/images/proyek5.jpg" // 
   }
+
+  
 ];
+
+export const socials = {
+  github: "https://github.com/Bluecode11",
+  linkedin: "https://www.linkedin.com/in/joel-rizky-05a355192/",
+  instagram: "https://www.instagram.com/joel_rizky1102/",
+  email: personalInfo.email
+};
