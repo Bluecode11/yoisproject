@@ -1,0 +1,23 @@
+---
+// src/components/Hero.astro
+import { personalInfo } from '../data/portfolio.js';
+---
+<section id="hero" class="min-h-[60vh] flex flex-col-reverse md:grid md:grid-cols-2 gap-8 md:gap-12 items-center reveal pt-10 md:pt-0">
+    <div class="space-y-4 md:space-y-6 text-center md:text-left">
+        <div class="inline-block bg-pink-400 border-4 border-black px-4 py-1 rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] -rotate-2">
+            <span class="font-black text-white uppercase tracking-widest text-xs md:text-sm">{personalInfo.role}</span>
+        </div>
+        <h1 class="text-5xl md:text-7xl font-black leading-none uppercase italic">
+            Halo! <br class="md:hidden"/> Saya <span class="text-blue-600 dark:text-blue-400 underline decoration-[6px] md:decoration-10 decoration-black dark:decoration-white">{personalInfo.name}.</span>
+        </h1>
+        <p class="text-lg md:text-xl font-bold leading-relaxed opacity-90 max-w-md mx-auto md:mx-0">{personalInfo.desc}</p>
+    </div>
+    <div class="flex justify-center w-full relative">
+        <div class="relative group">
+            <img src="/profile.jpg" alt="Foto Joel" class="w-64 h-64 md:w-80 md:h-80 object-cover rounded-3xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.2)] rotate-2 group-hover:rotate-0 transition-all duration-300" />
+            <div class="absolute -bottom-4 -right-4 bg-yellow-400 text-black border-4 border-black px-4 py-2 rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-black italic transform -rotate-6 group-hover:scale-110 transition-transform">
+                OPEN TO WORK! 🚀
+            </div>
+        </div>
+    </div>
+</section>

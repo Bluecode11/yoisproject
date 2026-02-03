@@ -1,0 +1,21 @@
+---
+// src/components/Experience.astro
+import { experiences } from '../data/portfolio.js';
+---
+<section id="experience" class="mt-20 md:mt-24 reveal">
+    <h2 class="text-3xl md:text-4xl font-black uppercase text-center mb-8 md:mb-10">Pengalaman Kerja 💼</h2>
+    <div class="flex flex-col gap-6 max-w-4xl mx-auto">
+        {experiences.map((exp) => (
+            <div class={`${exp.color} border-4 border-black p-6 md:p-8 rounded-3xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.2)] hover:-translate-y-1 transition-transform`}>
+                <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                    <div>
+                        <h3 class="text-2xl font-black uppercase text-black">{exp.role}</h3>
+                        <span class="font-bold text-lg text-black/80">{exp.company}</span>
+                    </div>
+                    <div class="mt-2 md:mt-0 bg-white border-2 border-black px-3 py-1 rounded-full text-black font-black text-sm shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] w-fit">{exp.period}</div>
+                </div>
+                <p class="font-bold text-black/80 md:text-lg leading-relaxed">{exp.desc}</p>
+            </div>
+        ))}
+    </div>
+</section>
