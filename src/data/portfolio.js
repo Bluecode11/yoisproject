@@ -57,7 +57,7 @@ export const projects = [
     desc: "Project Test.",
     tags: ["Astro"],
     color: "bg-pink-300",
-    image: "/images/test3.jpg",
+    image: "/images/test3.png",
   },
 ];
 
