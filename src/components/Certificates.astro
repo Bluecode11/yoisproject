@@ -1,0 +1,39 @@
+---
+// src/components/Certificates.astro
+import { certificates } from '../data/portfolio.js';
+---
+
+<section id="certificates" class="mt-20 md:mt-24 reveal">
+    <h2 class="text-3xl md:text-4xl font-black uppercase text-center mb-8 md:mb-10">Certifications 📜</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {certificates.map((cert) => (
+            <a href={cert.link} target="_blank" class="block bg-white dark:bg-gray-800 border-4 border-black dark:border-white p-6 rounded-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.2)] hover:-translate-y-2 transition-transform group relative overflow-hidden">
+                
+                <div class="absolute top-0 right-0 w-16 h-16 bg-yellow-400 dark:bg-blue-600 border-l-4 border-b-4 border-black dark:border-white rounded-bl-3xl -mr-1 -mt-1 z-0"></div>
+
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start mb-4 pr-12">
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-black uppercase text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-tight mb-1">
+                                {cert.title}
+                            </h3>
+                            <p class="font-bold text-gray-500 dark:text-gray-400 text-sm md:text-base">
+                                Issued by {cert.issuer}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between mt-6 border-t-4 border-black/10 dark:border-white/10 pt-4">
+                        <span class="font-black text-sm bg-black text-white dark:bg-white dark:text-black px-3 py-1 rounded-full">
+                            {cert.date}
+                        </span>
+                        <div class="flex items-center gap-2 font-black text-sm uppercase group-hover:underline decoration-2 underline-offset-4">
+                            View Credential ↗
+                        </div>
+                    </div>
+                </div>
+            </a>
+        ))}
+    </div>
+</section>

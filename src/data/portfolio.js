@@ -67,3 +67,18 @@ export const socials = {
   instagram: "https://www.instagram.com/joel_rizky1102/",
   email: personalInfo.email,
 };
+
+export const certificates = [
+  {
+    title: "Code Generation and Optimization Using IBM Granite",
+    issuer: "IBM",
+    date: "Aug 2025",
+    link: "https://www.credly.com/badges/f3da72f0-f182-47cb-b200-5775b9bb29a5/linked_in_profile",
+  },
+  {
+    title: "Postman API Fundamentals Student Expert",
+    issuer: "Postman",
+    date: "Jul 2025",
+    link: "https://badges.parchment.com/public/assertions/dbJJ5U-OStq-CL1lNtMzjw",
+  },
+];
