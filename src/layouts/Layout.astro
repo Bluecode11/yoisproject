@@ -6,23 +6,23 @@ const { title } = Astro.props;
 ---
 
 <html lang="id" class="scroll-smooth" id="html-root">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/png" href="/logo.png" />
-		<title>{title}</title>
-	</head>
-	<body class="bg-[#FFDE59] text-black dark:bg-[#1a1a1a] dark:text-white font-sans antialiased selection:bg-pink-300 min-h-screen transition-colors duration-300">
-		
+        <title>{title}</title>
+    </head>
+    <body class="bg-[#FFDE59] text-black dark:bg-[#1a1a1a] dark:text-white font-sans antialiased selection:bg-pink-300 min-h-screen transition-colors duration-300">
+        
         <slot />
 
         <script is:inline>
             // 1. Dark Mode
-			const toggleBtn = document.getElementById('theme-toggle');
-			const htmlElement = document.getElementById('html-root');
+            const toggleBtn = document.getElementById('theme-toggle');
+            const htmlElement = document.getElementById('html-root');
 
-			const savedTheme = localStorage.getItem('theme');
-			if (savedTheme === 'dark') htmlElement.classList.add('dark');
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') htmlElement.classList.add('dark');
             else htmlElement.classList.remove('dark');
 
             if (toggleBtn) {
@@ -33,33 +33,53 @@ const { title } = Astro.props;
             }
 
             // 2. Mobile Menu
-			const menuBtn = document.getElementById('menu-btn');
-			const mobileMenu = document.getElementById('mobile-menu');
-			const mobileLinks = document.querySelectorAll('.mobile-link');
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
 
-			if (menuBtn && mobileMenu) {
-				menuBtn.addEventListener('click', () => {
-					mobileMenu.classList.toggle('hidden');
-					mobileMenu.classList.toggle('flex');
-				});
-				mobileLinks.forEach(link => link.addEventListener('click', () => {
-					mobileMenu.classList.add('hidden');
-					mobileMenu.classList.remove('flex');
-				}));
-			}
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenu.classList.toggle('flex');
+                });
+                mobileLinks.forEach(link => link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                }));
+            }
 
             // 3. Scroll Reveal Animasi
-			const observer = new IntersectionObserver((entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) entry.target.classList.add('active');
-				});
-			});
-			document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-		</script>
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            });
+            document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
-		<style is:global>
-			.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
-			.reveal.active { opacity: 1; transform: translateY(0); }
-		</style>
-	</body>
+            // 4. Smooth Scroll & Clean URL (Mencegah tanda # muncul di URL)
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault(); // Matikan fungsi asli yg nambah #
+
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        // Scroll halus ke tujuan
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+
+                        // Hapus tanda # dari URL bar agar tetap bersih
+                        history.pushState(null, null, ' '); 
+                    }
+                });
+            });
+        </script>
+
+        <style is:global>
+            .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+            .reveal.active { opacity: 1; transform: translateY(0); }
+        </style>
+    </body>
 </html>
