@@ -15,7 +15,7 @@ export const skills = [
   { name: "Hardware/PC", color: "bg-gray-500" },
   { name: "Troubleshooting", color: "bg-blue-400" },
   { name: "Postman API", color: "bg-orange-500" },
-  { name: "Mobile Dev", color: "bg-green-400" },
+  { name: "Flutter", color: "bg-blue-800" },
   { name: "Networking", color: "bg-yellow-400" },
   { name: "Public Speaking", color: "bg-pink-400" },
 ];
