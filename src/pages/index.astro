@@ -3,6 +3,7 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
+import Marquee from '../components/Marquee.astro'; // <--- 1. Import ini
 import Skills from '../components/Skills.astro';
 import Experience from '../components/Experience.astro';
 import Projects from '../components/Projects.astro';
@@ -16,8 +17,10 @@ import { personalInfo } from '../data/portfolio.js';
 	
 	<Navbar />
 
-	<main class="max-w-5xl mx-auto px-6 pt-32 pb-20">
-		<Hero />
+	<main class="max-w-5xl mx-auto px-6 pt-32 pb-20 overflow-x-hidden"> <Hero />
+		
+        <Marquee />
+        
 		<Skills />
 		<Experience />
 		<Projects />
